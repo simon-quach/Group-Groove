@@ -10,6 +10,7 @@ const Group = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [songRequests, setSongRequests] = useState([]);
+  const [getCurrentSong, setCurrentSong] = useState({});
 
   useEffect(() => {
     const getSongs = async () => { // data.results[]. -> either artistName or trackName
@@ -28,13 +29,23 @@ const Group = () => {
       setSongRequests(data.data.songs_list);
     }
     getSongRequests();
-  }, [query])
+  }, [query, songRequests])
+
+  useEffect(() => {
+    const getCurrentSongs =  async () => {
+      const groupCode = location.pathname.slice(7); // Gets the group code from the URL path
+      const res = await axios.get(`http://localhost:8080/${groupCode}`)
+      const data = res.data;
+      setCurrentSong(data.data.now_playing);
+      console.log(data.data.now_playing)
+    }
+    getCurrentSongs();
+  }, [songRequests])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setQuery(search);
   }
-  
 
   return (
     <div className="flex justify-center h-full">
@@ -46,10 +57,10 @@ const Group = () => {
             <div className=''>
               <div className="text-[20px] font-bold">- NOW PLAYING -</div>
                 <div className="flex items-center mt-[1rem] gap-[2rem]">
-                  <img src="/runit.jpg" alt="album-cover" className="w-[10rem] rounded-lg reflect"/>
+                  <img src={getCurrentSong.albumCover} alt="album-cover" className="w-[10rem] rounded-lg reflect"/>
                   <div className="">
-                    <div className="text-[18px] sm:text-[24px] font-semibold">Run It (feat. Annika Wells)</div>
-                    <div className="text-[#686C90] text-[12px] sm:text-[16px]">Midnight Kids, Annika Wells</div>
+                    <div className="text-[18px] sm:text-[24px] font-semibold">{getCurrentSong.trackName}</div>
+                    <div className="text-[#686C90] text-[12px] sm:text-[16px]">{getCurrentSong.artistName}</div>
                   </div>
                 </div>
             </div>
@@ -59,7 +70,7 @@ const Group = () => {
               <div className='flex flex-col gap-2 mt-[1rem] overflow-auto'>
                 {
                   songRequests && songRequests.map((songRequest, index) => (
-                    <SongRequest key={index} songRequest={songRequest}/>
+                    <SongRequest key={index} songRequest={songRequest} />
                   ))
                 }
               </div>
