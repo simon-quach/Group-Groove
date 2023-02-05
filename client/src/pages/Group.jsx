@@ -1,26 +1,40 @@
 import { useState, useEffect } from 'react';
-import { BackButton, SongRequest, SearchCard } from '../components'
-import axios from 'axios'
+import { useLocation } from 'react-router-dom';
+import { BackButton, SongRequest, SearchCard } from '../components';
+import axios from 'axios';
 
 const Group = () => {
+  const location = useLocation();
+
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [songRequests, setSongRequests] = useState([]);
 
   useEffect(() => {
     const getSongs = async () => { // data.results[]. -> either artistName or trackName
-      const res = await axios.get(`https://itunes.apple.com/search?term=${query}&media=music&limit=5`)
-      const data = res.data
-      console.log(data)
+      const res = await axios.get(`https://itunes.apple.com/search?term=${query}&media=music&limit=5`);
+      const data = res.data;
       setResults(data.results); // Stores an array of searched songs
     }
     getSongs();
+  }, [query])
+
+  useEffect(() => {
+    const getSongRequests =  async () => {
+      const groupCode = location.pathname.slice(7); // Gets the group code from the URL path
+      const res = await axios.get(`http://localhost:8080/${groupCode}`)
+      const data = res.data;
+      setSongRequests(data.data.songs_list);
+    }
+    getSongRequests();
   }, [query])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setQuery(search);
   }
+  
 
   return (
     <div className="flex justify-center h-full">
@@ -43,10 +57,11 @@ const Group = () => {
             <div className=''>
               <div className="text-[20px] font-bold">- REQUESTS -</div>
               <div className='flex flex-col gap-2 mt-[1rem] overflow-auto'>
-                <SongRequest />
-                <SongRequest />
-                <SongRequest />
-                <SongRequest />
+                {
+                  songRequests && songRequests.map((songRequest, index) => (
+                    <SongRequest key={index} songRequest={songRequest}/>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -59,8 +74,8 @@ const Group = () => {
             <div className='text-center'>
               <div>
                 {
-                  results.map((result) => (
-                    <SearchCard song={result} />
+                  results.map((result, index) => (
+                    <SearchCard song={result} key={index} />
                   )
                 )}
               </div>
