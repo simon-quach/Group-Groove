@@ -34,8 +34,8 @@ const Group = () => {
                 <div className="flex items-center mt-[1rem] gap-[2rem]">
                   <img src="/runit.jpg" alt="album-cover" className="w-[10rem] rounded-lg reflect"/>
                   <div className="">
-                    <div className="text-[24px] font-semibold">Run It (feat. Annika Wells)</div>
-                    <div className="text-[#686C90]">Midnight Kids, Annika Wells</div>
+                    <div className="text-[18px] sm:text-[24px] font-semibold">Run It (feat. Annika Wells)</div>
+                    <div className="text-[#686C90] text-[12px] sm:text-[16px]">Midnight Kids, Annika Wells</div>
                   </div>
                 </div>
             </div>
