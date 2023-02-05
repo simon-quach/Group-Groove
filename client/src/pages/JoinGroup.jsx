@@ -19,7 +19,7 @@ const JoinGroup = () => {
           <label htmlFor="group-code" className="font-bold text-[30px]">
             Enter Group Code
           </label>
-          <input onChange={(e) => setGroupCode(e.target.value)} value={groupCode} type="text" name="group-code" id="group-code" className="mt-4 w-[24rem] h-[4rem] text-[36px] text-black text-center rounded-[6px]"/>
+          <input onChange={(e) => setGroupCode(e.target.value)} value={groupCode} type="text" name="group-code" id="group-code" maxlength="7" className="mt-4 w-[60%] h-[4rem] text-[36px] text-black text-center rounded-[6px]"/>
         </div>
 
         <button className="transition-all ease-in-out duration-200 p-2 rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-xl shadow-fuchsia-500/10 hover:shadow-fuchsia-500/20 px-2 mt-4">
