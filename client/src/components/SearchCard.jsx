@@ -6,7 +6,7 @@ const SearchCard = ({ song }) => {
 
   const addRequest = async () => {
     const { trackId, trackName, artworkUrl100, artistName } =  song;
-    axios.post('http://localhost:8080/add-song', {
+    axios.post('https://group-groove-f0ok.onrender.com/add-song', {
       trackId: trackId,
       trackName: trackName,
       albumCover: artworkUrl100,

@@ -12,7 +12,7 @@ const JoinGroup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (groupCode){
-      const res = await axios.get(`http://localhost:8080/join-group/${groupCode}`);
+      const res = await axios.get(`https://group-groove-f0ok.onrender.com/${groupCode}`);
       const data = res.data;
       if (data){
         navigate(`../group/${groupCode}`);

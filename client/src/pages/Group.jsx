@@ -24,7 +24,7 @@ const Group = () => {
   useEffect(() => {
     const getSongRequests =  async () => {
       const groupCode = location.pathname.slice(7); // Gets the group code from the URL path
-      const res = await axios.get(`http://localhost:8080/${groupCode}`)
+      const res = await axios.get(`https://group-groove-f0ok.onrender.com/${groupCode}`)
       const data = res.data;
       setSongRequests(data.data.songs_list);
     }
@@ -34,7 +34,7 @@ const Group = () => {
   useEffect(() => {
     const getCurrentSongs =  async () => {
       const groupCode = location.pathname.slice(7); // Gets the group code from the URL path
-      const res = await axios.get(`http://localhost:8080/${groupCode}`)
+      const res = await axios.get(`https://group-groove-f0ok.onrender.com/${groupCode}`)
       const data = res.data;
       setCurrentSong(data.data.now_playing);
       console.log(data.data.now_playing)
