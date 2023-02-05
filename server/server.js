@@ -33,18 +33,40 @@ app.post('/add-song', async (req, res) => {
   }
 })
 
+
 app.post('/add-group', async (req, res) => {
   try {
     const groupCode = req.body.groupCode;
 
     const newGroup = await Group.create({
       group_id: groupCode,
+      now_playing: {
+        trackName: "",
+        albumCover: "",
+        artistName: "",
+      },
       songs_list: []
     })
   } catch(err) {
     res.status(500).json({ success: false, message: err })
   }
+})
+
+app.post('/now-playing', async (req,res) => {
+  const { trackId, trackName, albumCover, artistName, groupCode} = req.body;
   
+  const findGroup = await Group.findOne({
+    group_id: groupCode
+  });
+  findGroup.now_playing.trackName = trackName;
+  findGroup.now_playing.albumCover = albumCover;
+  findGroup.now_playing.artistName = artistName;
+  const findExistingSong = await Group.deleteOne({
+    group_id: groupCode,
+    songs_list: {trackName: trackName}
+  });
+  findGroup.save();
+
 })
 
 app.get('/:id', async (req, res) => {
