@@ -8,7 +8,7 @@ const SongRequest = ({songRequest}) => {
   const [count, setCount] = useState(0);
 
   const updateNowPlaying = (trackId, trackName, albumCover, artistName) => {
-    axios.post('http://localhost:8080/now-playing', {
+    axios.post('https://group-groove-f0ok.onrender.com/now-playing', {
       trackId: trackId,
       trackName: trackName,
       albumCover: albumCover,

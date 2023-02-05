@@ -13,7 +13,7 @@ const CreateGroup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (groupCode){
-      axios.post('http://localhost:8080/add-group', {
+      axios.post('https://group-groove-f0ok.onrender.com/add-group', {
         groupCode: groupCode,
       })
       navigate(`../group/${groupCode}`);
