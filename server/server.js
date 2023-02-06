@@ -1,8 +1,11 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv'
 
 import connectDB from './mongodb/connect.js'
 import Group from './mongodb/models/group.js';
+
+dotenv.config();
 
 const app = express();
 
@@ -104,7 +107,7 @@ app.delete('/delete-song', (req, res) => {
 
 const startServer = async () => { // starts the server
   try {
-    connectDB('mongodb+srv://simonquach:Sq07112004!@group-groove.ngyhnqe.mongodb.net/?retryWrites=true&w=majority'); // connects to MongoDB database with url
+    connectDB(process.env.MONGODB_URL); // connects to MongoDB database with url
     app.listen(8080, () => console.log('Server has started on port http://localhost:8080'))
   } catch (err) {
     console.log(err);
