@@ -1,5 +1,7 @@
 # Group-Groove
 
+A web application that allows users to create/join rooms and suggest songs. Group Groove is essentially a music queue determined by the crowd.
+
 **The purpose of this project is to practice concepts related to:**
 > - MERN Stack
 > - Building a REST API
@@ -13,6 +15,30 @@
 > - Express
 > - MongoDB
 > - iTunes API
+
+## Setup
+
+### Client
+1. Go into the client folder
+```sh
+cd client
+```
+
+2. Install dependencies
+```sh
+npm install
+```
+
+### Server
+1. Go into the server folder
+```sh
+cd server
+```
+
+2. Install dependencies
+```sh
+npm install
+```
 
 # Hackathon Information
 
