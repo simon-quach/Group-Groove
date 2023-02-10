@@ -18,7 +18,7 @@ A web application that allows users to create/join rooms and suggest songs. Grou
 
 **Some issues present in the application:**
 > - Upvote feature is currently not stored in database, rather on client side
-> - React useEffect is rendering in an infinite loop; 
+> - React useEffect is rendering in an infinite loop
 
 **Things to learn:**
 > - Need to implement a better system for real-time updates
