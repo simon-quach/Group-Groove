@@ -37,7 +37,7 @@ We have learned a lot during the development of Group Groove. Some of the key th
 - The importance of collaboration and communication within a team in order to achieve a common goal.
 - How to integrate front-end with back-end
 - Using RESTful APIs
-- 
+
 ### What's next for Group Groove
 Possible features we have thought about implementing:
 - Using Spotify's API to have the ability to add, queue, and play songs
