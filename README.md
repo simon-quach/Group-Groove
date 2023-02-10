@@ -14,7 +14,7 @@
 > - MongoDB
 > - iTunes API
 
-## Hackathon Information
+# Hackathon Information
 ## Inspiration
 Making decisions that can please a large group of people can be a challenging task for any individual, especially when it comes to choosing music for social gatherings. The pressure is even greater when the person responsible for selecting the tunes is seen as the one in charge. The task of choosing music for a social gathering is not one to be taken lightly, as it can have a significant impact on the overall mood and atmosphere of the event. It's important to consider everyone's taste and ensure that the music selection appeals to a wide range of people. This can be a delicate balancing act, as it's possible that some attendees may have conflicting musical preferences.
 ## What it does
